@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Robot Test </title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap-theme.min.css">
+	<script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<div class="header clearfix">
+        <h3 class="text-muted">Robot Simulation</h3>
+    </div>
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>How To</h4>
+          <p>PLACE : To start the game</p>
+          <p>MOVE : To move the robot </p>
+          <p>LEFT, RIGHT, NORTH, WEST : To change direction of the robot</p>
+        </div>
+
+        <div class="col-lg-6">
+          <h4>Play now, just press enter after finish</h4>
+          <br>
+          <input type="text" id="instruction" onfocusout="Command(this.value)" onkeydown="if (event.keyCode == 13) Command(this.value);"> 
+          <div style="height:20px"></div>
+          <div id="note"></div>
+        </div>
+      </div>
+
+<script type="text/javascript">
+var firstCommand  = false;
+var newX = 0;
+var newY = 0;
+var maxX = 5;
+var maxY = 5;
+var direction = "north";
+function Command(instruct){
+	console.log(instruct);
+	var comm = instruct.toLowerCase();
+
+	if (comm == "place" || firstCommand == true){
+		document.getElementById("note").innerHTML = "<div class='alert alert-success'><strong>Success!</strong> You can start play now </div> ";
+	     if (comm == "move"){
+		     	if(direction == "right")
+		     	{	
+		     		newX = newX+1;
+		     		if(newX < maxX){
+		     			alert("X:" + newX);
+		     	    }
+		     	    else
+		     	    {
+		     	    	newX = newX-1;
+		     	    	alert("Error maximum X Coordinates");
+		     	    }
+		     	}
+		     	else if (direction == "left"){
+		     		newX = newX-1;
+		     		if(newX >-1){
+		     			alert("X:" + newX);
+		     	    }
+		     	    else
+		     	    {
+		     	    	newX = newX+1;
+		     	    	alert("Error minimum X Coordinates");
+		     	    }
+		     	}	
+		     	else if (direction == "north")
+		     	{
+		     		newY = newY + 1;
+		     		if(newY < maxY){
+		     		alert("Y:" + newY);
+		     		}
+		     		else{
+		     		   newY = newY - 1;
+		     		   alert("Error maximum Y Coordinates");
+		     		}
+		     	}
+		     	else if ( direction == "south"){
+		     		newY = newY -1;
+		     		if(newY >-1){
+		     		alert("Y:" + newY);
+		     		}
+		     		else{
+		     		newY = newY +1;
+		     		alert("Error minimum Y Coordinates");
+		     		}
+		     	}
+
+	     }
+	     else if(comm == "right"){
+	     	direction = "right";
+	     	alert(direction);
+	     }
+	     else if(comm == "left"){
+	     	direction = "left";
+	     	alert(direction);
+		     }
+	     else if (comm =="north"){
+	     	direction = "north";
+	     	alert(direction);
+	     }
+	     else if (comm == "south"){
+	     	direction = "south";
+	     	alert(direction);
+	     }
+	     else if(comm == "place"){
+	     	firstCommand = true;
+	     }
+	     else if (comm == "report"){
+	     	document.getElementById("note").innerHTML = "<div class='alert alert-info'><strong>Report!</strong> Coordinates: [ " + newX + "," + newY + "] " + direction.toUpperCase() + "</div> ";
+	     	//alert("Coordinates: [" + newX + "," + newY + "] " + direction.toUpperCase() );
+	     }
+	     else{
+	     	alert("No command/Maximum");
+     }
+	}else
+	{
+		document.getElementById("note").innerHTML = "<div class='alert alert-danger'><strong>Error!</strong> First instruction must be 'PLACE'</div> ";
+	}
+}
+</script>
+</div>
+</body>
+</html>
