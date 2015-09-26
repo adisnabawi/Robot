@@ -3,6 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> Robot Test </title>
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap-theme.min.css">
@@ -10,7 +11,22 @@
     <script src="bootstrap.min.js"></script>
 </head>
 <body>
-
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Robot Test</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+      <p class="navbar-text navbar-right">Back to <a href="/" class="navbar-link">Home</a></p>
+    </div>
+  </div>
+</nav>
 <div class="container">
 	<div class="header clearfix">
         <h3 class="text-muted">Robot Simulation</h3>
@@ -46,11 +62,10 @@ canvasY = 0;
 canvasX = 200;
 var direction = "north";
 function Command(instruct){
+	console.log(instruct);
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
 	ctx.fillStyle = "#FF0000";
-
-	console.log(instruct);
 	var comm = instruct.toLowerCase();
 
 	if (comm == "place" || firstCommand == true){
@@ -131,7 +146,7 @@ function Command(instruct){
 	     	firstCommand = true;
 	     }
 	     else if (comm == "report"){
-	     	document.getElementById("note").innerHTML = "<div class='alert alert-info'><strong>Report!</strong> Coordinates: [ " + newX + "," + newY + "] " + direction.toUpperCase() + "</div> ";
+	     	document.getElementById("note").innerHTML = "<div class='alert alert-info'><strong>Report!</strong> Coordinates: [ " + newX + "," + newY + " ] " + direction.toUpperCase() + "</div> ";
 	     	//alert("Coordinates: [" + newX + "," + newY + "] " + direction.toUpperCase() );
 	     }
 	     else{
