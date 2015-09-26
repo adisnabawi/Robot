@@ -55,6 +55,7 @@ function Command(instruct){
 
 	if (comm == "place" || firstCommand == true){
 		document.getElementById("note").innerHTML = "<div class='alert alert-success'><strong>Success!</strong> You can start play now </div> ";
+		ctx.fillRect(canvasY,canvasX,50,50);
 	     if (comm == "move"){
 		     	if(direction == "right")
 		     	{	
