@@ -20,7 +20,8 @@
           <h4>How To</h4>
           <p>PLACE : To start the game</p>
           <p>MOVE : To move the robot </p>
-          <p>LEFT, RIGHT, NORTH, WEST : To change direction of the robot</p>
+          <p>LEFT, RIGHT, NORTH, SOUTH : To change direction of the robot</p>
+          <p>REPORT : Show coordinates and direction </p>
         </div>
 
         <div class="col-lg-6">
@@ -29,6 +30,9 @@
           <input type="text" id="instruction" onfocusout="Command(this.value)" onkeydown="if (event.keyCode == 13) Command(this.value);"> 
           <div style="height:20px"></div>
           <div id="note"></div>
+          <canvas id="myCanvas" width="250" height="250" style="border:1px solid #c3c3c3;">
+			Your browser does not support the HTML5 canvas tag.
+		  </canvas>
         </div>
       </div>
 
@@ -38,8 +42,14 @@ var newX = 0;
 var newY = 0;
 var maxX = 5;
 var maxY = 5;
+canvasY = 0;
+canvasX = 200;
 var direction = "north";
 function Command(instruct){
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	ctx.fillStyle = "#FF0000";
+
 	console.log(instruct);
 	var comm = instruct.toLowerCase();
 
@@ -51,6 +61,8 @@ function Command(instruct){
 		     		newX = newX+1;
 		     		if(newX < maxX){
 		     			alert("X:" + newX);
+		     			ctx.clearRect(canvasY,canvasX,50,50);
+		     			ctx.fillRect(canvasY +=50,canvasX,50,50);
 		     	    }
 		     	    else
 		     	    {
@@ -62,6 +74,8 @@ function Command(instruct){
 		     		newX = newX-1;
 		     		if(newX >-1){
 		     			alert("X:" + newX);
+		     			ctx.clearRect(canvasY,canvasX,50,50);
+		     			ctx.fillRect(canvasY -=50,canvasX,50,50);
 		     	    }
 		     	    else
 		     	    {
@@ -74,6 +88,8 @@ function Command(instruct){
 		     		newY = newY + 1;
 		     		if(newY < maxY){
 		     		alert("Y:" + newY);
+		     		ctx.clearRect(canvasY,canvasX,50,50);
+		     		ctx.fillRect(canvasY,canvasX -=50,50,50);
 		     		}
 		     		else{
 		     		   newY = newY - 1;
@@ -84,6 +100,8 @@ function Command(instruct){
 		     		newY = newY -1;
 		     		if(newY >-1){
 		     		alert("Y:" + newY);
+		     		ctx.clearRect(canvasY,canvasX,50,50);
+		     		ctx.fillRect(canvasY ,canvasX += 50,50,50);
 		     		}
 		     		else{
 		     		newY = newY +1;
