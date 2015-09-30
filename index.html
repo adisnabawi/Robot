@@ -7,8 +7,27 @@
 	<title> Robot Test </title>
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap-theme.min.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="custom.css">
 	<script src="jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	
     <script src="bootstrap.min.js"></script>
+	<script>
+  $(function() {
+    var availableTags = [
+      "place",
+      "left",
+      "right",
+      "north",
+      "south",
+	  "move"
+    ];
+    $( "#instruction" ).autocomplete({
+      source: availableTags
+    });
+  });
+  </script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -20,33 +39,39 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Robot Test</a>
+      <a class="navbar-brand" href="#">Robot</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
-      <p class="navbar-text navbar-right">Back to <a href="/" class="navbar-link">Home</a></p>
+      <p class="navbar-text navbar-right"><a href="/" class="navbar-link"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></p>
     </div>
   </div>
 </nav>
 <div class="container">
 	<div class="header clearfix">
-        <h3 class="text-muted">Robot Simulation</h3>
+        <h2 class="text-muted">Robot Simulation</h2>
     </div>
       <div class="row marketing">
         <div class="col-lg-6">
-          <h4>How To</h4>
+          <h3>How To</h3>
           <p>PLACE : To start the game</p>
           <p>MOVE : To move the robot </p>
           <p>LEFT, RIGHT, NORTH, SOUTH : To change direction of the robot</p>
           <p>REPORT : Show coordinates and direction </p>
+          <hr>
+          <h4> Check out code from 
+          	<a href="https://github.com/adisnabawi/Robot"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> GitHub</a> 
+          </h4>
+          <hr>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-6" style="text-align:center">
           <h4>Play now, just press enter after finish</h4>
           <br>
-          <input type="text" id="instruction" onfocusout="Command(this.value)" onkeydown="if (event.keyCode == 13) Command(this.value);"> 
+		  <label for="instruction">Instruction: </label>
+          <input type="text" id="instruction" onfocusout="Command(this.value)" onkeydown="if (event.keyCode == 13) Command(this.value);" style="height: 30px;border-radius: 5px;border-color: #0A0000;"> 
           <div style="height:20px"></div>
           <div id="note"></div>
-          <canvas id="myCanvas" width="250" height="250" style="border:1px solid #c3c3c3;">
+          <canvas id="myCanvas" width="250" height="250" style="border: 2px solid #000000">
 			Your browser does not support the HTML5 canvas tag.
 		  </canvas>
         </div>
@@ -65,7 +90,7 @@ function Command(instruct){
 	console.log(instruct);
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
-	ctx.fillStyle = "#FF0000";
+	ctx.fillStyle = "#3988CC";
 	var comm = instruct.toLowerCase();
 
 	if (comm == "place" || firstCommand == true){
