@@ -103,7 +103,7 @@ function Command(instruct){
 		     	{	
 		     		newX = newX+1;
 		     		if(newX < maxX){
-		     			alert("X:" + newX);
+		     			//alert("X:" + newX);
 		     			ctx.clearRect(canvasY,canvasX,50,50);
 		     			ctx.fillRect(canvasY +=50,canvasX,50,50);
 		     	    }
@@ -116,7 +116,7 @@ function Command(instruct){
 		     	else if (direction == "left"){
 		     		newX = newX-1;
 		     		if(newX >-1){
-		     			alert("X:" + newX);
+		     			//alert("X:" + newX);
 		     			ctx.clearRect(canvasY,canvasX,50,50);
 		     			ctx.fillRect(canvasY -=50,canvasX,50,50);
 		     	    }
@@ -130,7 +130,7 @@ function Command(instruct){
 		     	{
 		     		newY = newY + 1;
 		     		if(newY < maxY){
-		     		alert("Y:" + newY);
+		     		//alert("Y:" + newY);
 		     		ctx.clearRect(canvasY,canvasX,50,50);
 		     		ctx.fillRect(canvasY,canvasX -=50,50,50);
 		     		}
@@ -142,7 +142,7 @@ function Command(instruct){
 		     	else if ( direction == "south"){
 		     		newY = newY -1;
 		     		if(newY >-1){
-		     		alert("Y:" + newY);
+		     		//alert("Y:" + newY);
 		     		ctx.clearRect(canvasY,canvasX,50,50);
 		     		ctx.fillRect(canvasY ,canvasX += 50,50,50);
 		     		}
